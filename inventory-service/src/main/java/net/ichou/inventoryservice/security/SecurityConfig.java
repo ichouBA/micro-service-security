@@ -30,6 +30,7 @@ public class SecurityConfig {
                 .build();
     }
 
+    /* fix Cors problem */
     @Bean
     CorsConfigurationSource corsConfiguration(){
         CorsConfiguration configuration = new CorsConfiguration();
