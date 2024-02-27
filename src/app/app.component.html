@@ -10,7 +10,7 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/products'">Products</a>
+          <a class="nav-link" [routerLink]="'/products'" *ngIf="ks.getUserRoles().includes('USER')">Products</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/customers">Customer</a>
@@ -18,11 +18,19 @@
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span *ngIf="profile; else login">{{profile.username}}</span>
+            <ng-template #login>
+              <button class="btn btn-success" (click)="handleLogin()">Login</button>
+            </ng-template>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" (click)="handleLogout()">Logout</a></li>
+          </ul>
+        </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>

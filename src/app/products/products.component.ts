@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit{
     this.http.get("http://localhost:8087/api/products").subscribe({
       next: data=>{
         this.products = data
+          console.log(data)
       },
       error: err => console.log(err)
     })
