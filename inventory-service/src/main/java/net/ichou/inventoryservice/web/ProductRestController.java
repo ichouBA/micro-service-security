@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin("*")
 @EnableMethodSecurity(prePostEnabled = true)
 public class ProductRestController {
     private ProductRepository productRepository;
@@ -20,7 +21,7 @@ public class ProductRestController {
     }
 
     @GetMapping("/products")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('USER')")
     public List<Product> productList(){
         return productRepository.findAll();
     }
